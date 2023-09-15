@@ -130,16 +130,16 @@ resource "azurerm_lb_nat_pool" "natpol" {
 #---------------------------------------
 # Health Probe for resources
 #---------------------------------------
-resource "azurerm_lb_probe" "lbp" {
-  count               = var.enable_load_balancer ? 1 : 0
-  name                = lower("lb-probe-port-${var.load_balancer_health_probe_port}-${var.vmscaleset_name}")
-  resource_group_name = data.azurerm_resource_group.rg.name
-  loadbalancer_id     = azurerm_lb.vmsslb[count.index].id
-  port                = var.load_balancer_health_probe_port
-  protocol            = var.lb_probe_protocol
-  request_path        = var.lb_probe_protocol != "Tcp" ? var.lb_probe_request_path : null
-  number_of_probes    = var.number_of_probes
-}
+# resource "azurerm_lb_probe" "lbp" {
+  # count               = var.enable_load_balancer ? 1 : 0
+  # name                = lower("lb-probe-port-${var.load_balancer_health_probe_port}-${var.vmscaleset_name}")
+  # resource_group_name = data.azurerm_resource_group.rg.name
+  # loadbalancer_id     = azurerm_lb.vmsslb[count.index].id
+  # port                = var.load_balancer_health_probe_port
+  # protocol            = var.lb_probe_protocol
+  # request_path        = var.lb_probe_protocol != "Tcp" ? var.lb_probe_request_path : null
+  # number_of_probes    = var.number_of_probes
+# }
 
 #--------------------------
 # Load Balancer Rules
