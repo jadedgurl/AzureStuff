@@ -146,7 +146,7 @@ resource "azurerm_lb_probe" "lbp" {
 resource "azurerm_lb_rule" "lbrule" {
   count                          = var.enable_load_balancer ? length(var.load_balanced_port_list) : 0
   name                           = format("%s-%02d-rule", var.vmscaleset_name, count.index + 1)
-  resource_group_name            = data.azurerm_resource_group.rg.name
+##resource_group_name= data.azurerm_resource_group.rg.name
   loadbalancer_id                = azurerm_lb.vmsslb[0].id
   probe_id                       = azurerm_lb_probe.lbp[0].id
   protocol                       = "Tcp"
